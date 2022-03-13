@@ -51,6 +51,7 @@ namespace API
                 c.RoutePrefix = string.Empty;
             });
 
+            
             app.UseHttpsRedirection();
 
             app.UseRouting();
