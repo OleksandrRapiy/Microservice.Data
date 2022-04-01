@@ -1,8 +1,11 @@
 using API.Infrastructure.Context;
 using API.Infrastructure.Repositories;
+using API.Infrastructure.Services;
+using Azure.Identity;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Azure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -26,7 +29,17 @@ namespace API
 
             services.AddDbContext<ApiDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString(nameof(DbContext))));
 
+
+            services.AddAzureClients(builder =>
+            {
+                // Use the environment credential by default
+                builder.UseCredential(new DefaultAzureCredential());
+                builder.AddQueueServiceClient(Configuration.GetSection("QueueConnection"))
+                  .ConfigureOptions(c => c.MessageEncoding = Azure.Storage.Queues.QueueMessageEncoding.Base64);
+            });
+
             services.AddTransient<IMovieRepository, MovieRepository>();
+            services.AddTransient<IQueueService, QueueService>();
 
             services.AddSwaggerGen(c =>
             {

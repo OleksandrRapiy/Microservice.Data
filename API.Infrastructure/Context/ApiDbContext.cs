@@ -7,6 +7,8 @@ namespace API.Infrastructure.Context
     {
         public DbSet<Movie> Movies { get; set; }
         public ApiDbContext(DbContextOptions<ApiDbContext> options) : base(options)
-        { }
+        {
+            Database.Migrate();
+        }
     }
 }
