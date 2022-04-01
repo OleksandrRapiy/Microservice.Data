@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/dev/[controller]")]
     [ApiController]
     public class QueueController : ControllerBase
     {
