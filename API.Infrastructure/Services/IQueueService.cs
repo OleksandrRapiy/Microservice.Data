@@ -6,6 +6,6 @@ namespace API.Infrastructure.Services
 {
     public interface IQueueService
     {
-        Task AddAsync(string message)
+        Task AddAsync(string message);
     }
 }
