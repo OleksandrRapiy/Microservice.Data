@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+		
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.14" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="5.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="5.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Microservice.Data.Application\Microservice.Data.Application.csproj" />
+	  <ProjectReference Include="..\Microservice.Data.Domain\Microservice.Data.Domain.csproj" />
+	  <ProjectReference Include="..\Microservice.Data.Persistence\Microservice.Data.Persistence.csproj" />
+	</ItemGroup>
+
+</Project>
