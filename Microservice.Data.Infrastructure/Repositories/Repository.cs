@@ -16,11 +16,11 @@ namespace Microservice.Data.Infrastructure.Repositories
             _context = context;
         }
 
+        public IUnitOfWork UnitOfWork { get; protected set; }
+
         public async Task AddAsync(T entity)
         {
             await _context.Set<T>().AddAsync(entity);
-
-            await _context.SaveChangesAsync();
         }
 
         public Task<int> Delete(int id)

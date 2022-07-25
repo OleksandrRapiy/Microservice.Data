@@ -37,7 +37,7 @@ namespace Microservice.Data.API
 
             services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(Configuration.GetConnectionString(nameof(DbContext))));
 
-            services.AddTransient<IMovieRepository, MovieRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             services.AddSwaggerGen(c =>
             {
@@ -45,6 +45,8 @@ namespace Microservice.Data.API
             });
 
             services.AddMediatR(assemblies);
+
+            services.AddAutoMapper(assemblies);
 
             services.AddRouting(options => options.LowercaseUrls = true);
         }

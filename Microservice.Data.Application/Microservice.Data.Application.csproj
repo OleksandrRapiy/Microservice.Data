@@ -9,11 +9,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="MediatR" Version="10.0.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Microservice.Data.Domain\Microservice.Data.Domain.csproj" />
+    <ProjectReference Include="..\Microservice.Data.Persistence\Microservice.Data.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

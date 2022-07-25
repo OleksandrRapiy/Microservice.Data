@@ -4,9 +4,11 @@ using Microservice.Data.Persistence.Context;
 
 namespace Microservice.Data.Infrastructure.Repositories
 {
-    public class MovieRepository : Repository<MovieEntity>, IMovieRepository
+    public class MovieRepository : Repository<MovieEntity>, IRepository<MovieEntity>
     {
-        public MovieRepository(ApplicationContext context): base(context)
-        { }
+        public MovieRepository(ApplicationContext context) : base(context)
+        {
+
+        }
     }
 }

@@ -1,10 +1,10 @@
 ﻿using MediatR;
-using Microservice.Data.Domain.Entites;
+using Microservice.Data.Application.Dtos;
 using System.Collections.Generic;
 
 namespace Microservice.Data.Application.Queries
 {
-    public class GetAllMoviesQuery: IRequest<IEnumerable<MovieEntity>>
+    public class GetAllMoviesQuery: IRequest<IEnumerable<MovieDto>>
     {
     }
 }
