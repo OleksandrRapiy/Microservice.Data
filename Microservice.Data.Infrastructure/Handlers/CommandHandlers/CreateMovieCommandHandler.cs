@@ -5,7 +5,7 @@ using Microservice.Data.Domain.Entites;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Microservice.Data.Infrastructure.Handlers
+namespace Microservice.Data.Infrastructure.Handlers.CommandHandlers
 {
     public class CreateMovieCommandHandler : IRequestHandler<CreateMovieCommand, Unit>
     {

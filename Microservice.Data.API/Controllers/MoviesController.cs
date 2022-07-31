@@ -18,17 +18,28 @@ namespace Microservice.Data.API.Controllers
             _mediator = mediator;
         }
 
+
+        /// <summary>
+        /// Get list of all movies async.
+        /// </summary>
+        /// <returns>List of all movies.</returns>
         [HttpGet()]
-        public async Task<IActionResult> GetMovies()
-        {
-            return Ok(await _mediator.Send(new GetAllMoviesQuery()));
-        }
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(500)]
+        public async Task<IActionResult> GetMoviesAsync()
+            => Ok(await _mediator.Send(new GetAllMoviesQuery()));
 
 
+        /// <summary>
+        /// Create movie async.
+        /// </summary>
+        /// <returns>Empty object if movie was created.</returns>
         [HttpPost]
-        public async Task<IActionResult> Create(CreateMovieCommand command)
-        {
-            return Ok(await _mediator.Send(command));
-        }
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(500)]
+        public async Task<IActionResult> CreateMovieAsync(CreateMovieCommand command)
+           => Ok(await _mediator.Send(command));
     }
 }

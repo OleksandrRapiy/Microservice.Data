@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Microservice.Data.Infrastructure.Handlers
+namespace Microservice.Data.Infrastructure.Handlers.QueryHandlers
 {
     internal class GetAllMoviesHandler : IRequestHandler<GetAllMoviesQuery, IEnumerable<MovieDto>>
     {

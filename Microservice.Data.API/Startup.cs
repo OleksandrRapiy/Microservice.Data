@@ -42,6 +42,11 @@ namespace Microservice.Data.API
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
+
+                var xml = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPaht = Path.Combine(AppContext.BaseDirectory, xml);
+                
+                c.IncludeXmlComments(xmlPaht);
             });
 
             services.AddMediatR(assemblies);
