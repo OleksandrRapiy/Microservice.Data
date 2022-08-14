@@ -35,7 +35,7 @@ namespace Microservice.Data.API
 
             services.AddControllers();
 
-            services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(Configuration.GetConnectionString(nameof(DbContext))));
+            services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(Configuration.GetConnectionString("LocalConnection")));
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
@@ -71,7 +71,7 @@ namespace Microservice.Data.API
                 c.RoutePrefix = string.Empty;
             });
 
-            app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
 
             app.UseRouting();
 

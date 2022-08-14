@@ -7,6 +7,8 @@ namespace Microservice.Data.Persistence.Context
     {
         public DbSet<MovieEntity> Movies { get; set; }
         public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
-        { }
+        {
+            Database.EnsureCreated();
+        }
     }
 }
