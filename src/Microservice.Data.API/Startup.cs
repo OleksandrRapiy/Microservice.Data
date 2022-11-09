@@ -4,6 +4,7 @@ using Microservice.Data.Application.Interfaces;
 using Microservice.Data.Infrastructure.Repositories;
 using Microservice.Data.Persistence.Context;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -36,8 +37,8 @@ namespace Microservice.Data.API
 
             var assemblies = paths.Select(path => Assembly.Load(AssemblyName.GetAssemblyName(path))).ToArray();
 
-            services.AddControllers(); 
-            
+            services.AddControllers();
+
             var postgreSqlDbConnection = Configuration.GetSection("DbConnection").Value;
             if (postgreSqlDbConnection is null) throw new ArgumentNullException(nameof(postgreSqlDbConnection));
 
@@ -66,7 +67,6 @@ namespace Microservice.Data.API
             {
                 options.Authority = Configuration["Identity:Authority"];
                 options.ApiName = Configuration["Identity:ApiName"];
-
                 options.TokenRetriever = request =>
                 {
                     request.Cookies.TryGetValue("access_token", out var cookiesToken);
@@ -78,6 +78,14 @@ namespace Microservice.Data.API
                     return resp;
                 };
             });
+
+            // You create policy if token have required scope
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("microservice.data.api",
+                    policy => policy.RequireScope("microservice.data.api"));
+            });
+
             #endregion
 
             #region Swagger 

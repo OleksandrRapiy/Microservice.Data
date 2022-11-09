@@ -9,6 +9,7 @@ namespace Microservice.Data.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Policy = "microservice.data.api")]
     public class MoviesController : ControllerBase
     {
 
