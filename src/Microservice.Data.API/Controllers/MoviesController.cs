@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microservice.Data.Application.Commands;
 using Microservice.Data.Application.Queries;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -36,6 +37,7 @@ namespace Microservice.Data.API.Controllers
         /// </summary>
         /// <returns>Empty object if movie was created.</returns>
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
         [ProducesResponseType(500)]
